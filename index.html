@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Site in About:Blank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f4f4f9;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Launch Website</h1>
+    <p>Click the button below to open your website inside an about:blank page.</p>
+    
+    <!-- This button triggers the JavaScript function below -->
+    <button onclick="openSite()">Launch Site</button>
+
+    <script>
+        function openSite() {
+            // ---------------------------------------------------------
+            // CHANGE THE URL BELOW TO THE WEBSITE YOU WANT TO OPEN
+            // ---------------------------------------------------------
+            const targetUrl = "https://account.englishbridalcouture.com"; 
+            
+            // This opens a completely blank browser tab
+            const newWindow = window.open("about:blank", "_blank");
+            
+            if (newWindow) {
+                // This injects an iframe into the blank tab to display your website full-screen
+                newWindow.document.write(`
+                    <html style="margin:0;padding:0;height:100%;width:100%;overflow:hidden;">
+                    <head><title>Application</title></head>
+                    <body style="margin:0;padding:0;height:100%;width:100%;overflow:hidden;">
+                        <iframe src="${targetUrl}" style="border:none;width:100%;height:100%;margin:0;padding:0;"></iframe>
+                    </body>
+                    </html>
+                `);
+                newWindow.document.close();
+            } else {
+                alert("Pop-up blocked! Please allow pop-ups for this website.");
+            }
+        }
+    </script>
+
+</body>
+</html>
